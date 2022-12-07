@@ -367,6 +367,14 @@ video {
   max-width: 100%;
   height: auto;
 }
+    html {
+        font-family: yekan;
+        scroll-behavior: smooth;
+        font-size: 62.5%;
+    }
+    body{
+        font-size: 1.6rem;
+    }
 
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
@@ -460,4 +468,9 @@ video {
   --tw-backdrop-opacity:  ;
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
+}
+
+@font-face {
+    font-family: "yekan";
+    src: url('/fonts/Yekan.woff');
 }

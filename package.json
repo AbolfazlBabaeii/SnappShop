@@ -7,8 +7,8 @@
     "build": "yarn run build:css && next build",
     "start": "next start",
     "lint": "next lint",
-    "watch:css": "postcss ./styles/globals.css -o ./src/assets/main.css --watch",
-    "build:css": "postcss ./styles/globals.css -o ./src/assets/main.css --minify"
+    "watch:css": "postcss ./public/style.css -o ./src/assets/main.css --watch",
+    "build:css": "postcss ./public/style.css -o ./src/assets/main.css --minify"
   },
   "dependencies": {
     "concurrently": "^7.4.0",

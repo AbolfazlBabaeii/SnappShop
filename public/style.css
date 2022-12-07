@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "yekan";
+    src: url('/fonts/Yekan.woff');
+}
+
+
+@layer base {
+    html {
+        font-family: yekan;
+        scroll-behavior: smooth;
+        font-size: 62.5%;
+    }
+    body{
+        font-size: 1.6rem;
+    }
+}

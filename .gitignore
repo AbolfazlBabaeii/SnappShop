@@ -37,3 +37,6 @@ next-env.d.ts
 
 #Folders
 .idea
+
+#files
+src/assets/main.css
