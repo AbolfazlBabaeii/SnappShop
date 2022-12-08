@@ -11,6 +11,7 @@
     "build:css": "postcss ./public/style.css -o ./src/assets/main.css --minify"
   },
   "dependencies": {
+    "@svgr/webpack": "^6.5.1",
     "concurrently": "^7.4.0",
     "cssnano": "^5.1.13",
     "json-server": "^0.17.1",
