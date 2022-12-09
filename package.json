@@ -7,13 +7,15 @@
     "build": "yarn run build:css && next build",
     "start": "next start",
     "lint": "next lint",
-    "watch:css": "postcss ./styles/globals.css -o ./src/assets/main.css --watch",
-    "build:css": "postcss ./styles/globals.css -o ./src/assets/main.css --minify"
+    "watch:css": "postcss ./public/style.css -o ./src/assets/main.css --watch",
+    "build:css": "postcss ./public/style.css -o ./src/assets/main.css --minify"
   },
   "dependencies": {
+    "@svgr/webpack": "^6.5.1",
+    "@tanstack/react-query": "^4.19.1",
+    "axios": "^1.2.1",
     "concurrently": "^7.4.0",
     "cssnano": "^5.1.13",
-    "json-server": "^0.17.1",
     "next": "^13.0.6",
     "postcss-cli": "^10.0.0",
     "react": "^18.2.0",

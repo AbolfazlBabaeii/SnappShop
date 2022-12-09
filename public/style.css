@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "iranSans";
+    src: url('/fonts/IRANSans.ttf');
+}
+
+@font-face {
+    font-family: "iranSansBold";
+    src: url('/fonts/IRANSans_Bold.ttf');
+}
+
+
+@layer base {
+    html {
+        font-family: iranSans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        scroll-behavior: smooth;
+        font-size: 62.5%;
+        direction: rtl;
+    }
+
+    body {
+        font-size: 1.6rem;
+        background-color: theme("colors.background");
+    }
+}
