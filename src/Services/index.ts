@@ -14,7 +14,7 @@ export const getAreas = async (
 ) => {
   const response = await axiosInstance.get<IGetAreasResDTO>(
     `/api/areas${query && `?query=${query}`}`,
-    { ...options }
+    { ...options, headers: { "Accept-Encoding": "gzip,deflate,compress" } }
   );
   await response.data.areas.forEach((area, index) => (area.order = index + 1));
   console.log(response.data);
