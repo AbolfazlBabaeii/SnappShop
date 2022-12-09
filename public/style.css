@@ -23,6 +23,6 @@
 
     body {
         font-size: 1.6rem;
-        background-color: theme("colors.bg-gray");
+        background-color: theme("colors.background");
     }
 }

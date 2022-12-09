@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
       iranSans: [
@@ -23,11 +20,13 @@ module.exports = {
       iranSansBold: ["iranSansBold"],
     },
     colors: {
-      "bg-gray": "#eee",
+      background: "#eee",
       gray: "#707070",
       white: "#fff",
-      ligthGray: "#f5f5f5",
       purple: "#b500af",
+      ligth_gray: "#f5f5f5",
+      devider_gray: "#e2e2e2",
+      circle_gray: "#616161",
     },
     extend: {},
   },
