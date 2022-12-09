@@ -1,14 +1,19 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { IGetAreasResDTO } from "types/DTO/areas/res";
 
-export const axiosInstance = axios.create({});
+export const axiosInstance = axios.create({
+  baseURL:
+    process.env.NODE_ENV === "production"
+      ? "https://SnappShop.vercel.app/"
+      : "http://localhost:3000",
+});
 
 export const getAreas = async (
   query = "",
   options: AxiosRequestConfig = {}
 ) => {
   const response = await axiosInstance.get<IGetAreasResDTO>(
-    `http://192.168.1.103:3000/api/areas${query && `?query=${query}`}`,
+    `api/areas${query && `?query=${query}`}`,
     { ...options }
   );
   await response.data.areas.forEach((area, index) => (area.order = index + 1));
