@@ -13,6 +13,7 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
     const [isPending, startTransition] = useTransition();
     const [selectedArea, setSelectedArea] = useState<Area>();
     useEffect(() => {
+      setShowAreas(areas);
       const scrollThrottling = (limit: number) => {
         let wait = false;
         return function () {
@@ -24,7 +25,6 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
               currentArea - 20 < 0 ? 0 : currentArea - 20,
               currentArea + 20
             );
-            console.log(areas, "areas");
             startTransition(() => {
               setShowAreas(visibleData);
             });
@@ -36,7 +36,6 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
         };
       };
 
-      setShowAreas(areas);
       if (!isLoading && areas && areas?.length > 0) {
         window.addEventListener("scroll", scrollThrottling(10));
       }

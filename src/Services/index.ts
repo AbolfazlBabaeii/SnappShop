@@ -17,6 +17,5 @@ export const getAreas = async (
     { ...options, headers: { "Accept-Encoding": "gzip,deflate,compress" } }
   );
   await response.data.areas.forEach((area, index) => (area.order = index + 1));
-  console.log(response.data);
   return response.data;
 };
