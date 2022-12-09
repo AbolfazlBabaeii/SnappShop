@@ -53,54 +53,52 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
     }, [isLoading]);
     return (
       <>
-        {showAreas && (
-          <ul
-            className={"mt-[7.3rem] relative bg-white"}
-            style={{ height: !isLoading ? areas?.length * 52 : 15 * 52 }}
-          >
-            {!isLoading
-              ? showAreas.length > 0 &&
-                showAreas.map((area) => (
+        <ul
+          className={"mt-[7.3rem] relative bg-white"}
+          style={{ height: !isLoading ? areas?.length * 52 : 15 * 52 }}
+        >
+          {!isLoading
+            ? showAreas?.length > 0 &&
+              showAreas.map((area) => (
+                <li
+                  onClick={() => setSelectedArea(area)}
+                  className={`absolute w-full h-[5.2rem] px-[1.6rem] pt-[1.4rem]`}
+                  style={{ top: `${(area.order! - 1) * 52}px` }}
+                  key={area.id}
+                >
+                  <div className="flex items-center justify-between">
+                    <span>{area.name}</span>
+                    <div
+                      className={`flex items-center justify-center w-[2rem] h-[2rem] rounded-full border-2 border-circle_gray ${
+                        selectedArea?.id === area.id ? "border-purple" : ""
+                      }`}
+                    >
+                      {selectedArea?.id === area.id && (
+                        <div className="w-[1rem] h-[1rem] rounded-full bg-purple" />
+                      )}
+                    </div>
+                  </div>
+                  <hr className="mt-[1.4rem] text-devider_gray" />
+                </li>
+              ))
+            : Array(15)
+                .fill("")
+                .map((item, index) => (
                   <li
-                    onClick={() => setSelectedArea(area)}
-                    className={`absolute w-full h-[5.2rem] px-[1.6rem] pt-[1.4rem]`}
-                    style={{ top: `${(area.order! - 1) * 52}px` }}
-                    key={area.id}
+                    className={`absolute w-full h-[5.2rem] px-[1.6rem] pt-[1.4rem] animate-pulse`}
+                    style={{ top: `${index * 52}px` }}
+                    key={index}
                   >
                     <div className="flex items-center justify-between">
-                      <span>{area.name}</span>
+                      <div className=" h-2.5 bg-gray rounded-full w-36"></div>
                       <div
-                        className={`flex items-center justify-center w-[2rem] h-[2rem] rounded-full border-2 border-circle_gray ${
-                          selectedArea?.id === area.id ? "border-purple" : ""
-                        }`}
-                      >
-                        {selectedArea?.id === area.id && (
-                          <div className="w-[1rem] h-[1rem] rounded-full bg-purple" />
-                        )}
-                      </div>
+                        className={`flex items-center justify-center w-[2rem] h-[2rem] rounded-full border-2 border-circle_gray`}
+                      ></div>
                     </div>
                     <hr className="mt-[1.4rem] text-devider_gray" />
                   </li>
-                ))
-              : Array(15)
-                  .fill("")
-                  .map((item, index) => (
-                    <li
-                      className={`absolute w-full h-[5.2rem] px-[1.6rem] pt-[1.4rem] animate-pulse`}
-                      style={{ top: `${index * 52}px` }}
-                      key={index}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className=" h-2.5 bg-gray rounded-full w-36"></div>
-                        <div
-                          className={`flex items-center justify-center w-[2rem] h-[2rem] rounded-full border-2 border-circle_gray`}
-                        ></div>
-                      </div>
-                      <hr className="mt-[1.4rem] text-devider_gray" />
-                    </li>
-                  ))}
-          </ul>
-        )}
+                ))}
+        </ul>
       </>
     );
   }
