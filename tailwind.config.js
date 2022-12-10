@@ -21,6 +21,7 @@ module.exports = {
     },
     colors: {
       background: "#eee",
+      skeleton: "#d1d5db",
       gray: "#707070",
       white: "#fff",
       purple: "#b500af",
