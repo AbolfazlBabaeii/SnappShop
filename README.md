@@ -12,4 +12,4 @@ yarn dev
 
 What things are used?
 
-tailwind.css husky, prettier, eslintو axios, react query,svgr
+tailwind.css husky, prettier, eslint, axios, react query,svgr
