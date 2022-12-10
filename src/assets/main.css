@@ -472,6 +472,9 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.visible {
+  visibility: visible !important;
+}
 .fixed {
   position: fixed !important;
 }

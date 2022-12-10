@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useTransition } from "react";
+import React, { useEffect, useState } from "react";
 import { Area } from "types/DTO/areas/res";
 
 interface IAreasListProps {
@@ -11,8 +11,6 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
     const [showAreas, setShowAreas] = useState(areas);
     //how many item visible on screen
     const [visibleAreaCount, setVisibleAreaCount] = useState<number>(20);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [isPending, startTransition] = useTransition();
     const [selectedArea, setSelectedArea] = useState<Area>();
     useEffect(() => {
       setShowAreas(areas);
@@ -21,7 +19,7 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
       // limit the execution scroll event
       const scrollThrottling = (limit: number) => {
         let wait = false;
-        return function () {
+        return () => {
           if (!wait) {
             const currentArea = Math.round(
               (window.scrollY + window.innerHeight) / 52
@@ -32,11 +30,9 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
                 : currentArea - (visibleAreaCount + 5);
             const endPoint = currentArea + 5;
             const visibleData = areas?.slice(startPoint, endPoint);
-            startTransition(() => {
-              setShowAreas(visibleData);
-            });
+            setShowAreas(visibleData);
             wait = true;
-            setTimeout(function () {
+            setTimeout(() => {
               wait = false;
             }, limit);
           }
