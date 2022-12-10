@@ -14,6 +14,7 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
     const [selectedArea, setSelectedArea] = useState<Area>();
     useEffect(() => {
       setShowAreas(areas);
+      // limit the execution scroll event
       const scrollThrottling = (limit: number) => {
         let wait = false;
         return function () {
