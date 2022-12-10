@@ -9,23 +9,29 @@ interface IAreasListProps {
 const AreasList: React.FC<IAreasListProps> = React.memo(
   ({ areas, isLoading }) => {
     const [showAreas, setShowAreas] = useState(areas);
+    //how many item visible on screen
+    const [visibleAreaCount, setVisibleAreaCount] = useState<number>(20);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isPending, startTransition] = useTransition();
     const [selectedArea, setSelectedArea] = useState<Area>();
     useEffect(() => {
       setShowAreas(areas);
+      const visibleAreaCount = Math.round(window.innerHeight / 52);
+      setVisibleAreaCount(visibleAreaCount);
       // limit the execution scroll event
       const scrollThrottling = (limit: number) => {
         let wait = false;
         return function () {
           if (!wait) {
-            const currentArea = Math.floor(
+            const currentArea = Math.round(
               (window.scrollY + window.innerHeight) / 52
             );
-            const visibleData = areas?.slice(
-              currentArea - 20 < 0 ? 0 : currentArea - 20,
-              currentArea + 20
-            );
+            const startPoint =
+              currentArea - (visibleAreaCount + 5) < 0
+                ? 0
+                : currentArea - (visibleAreaCount + 5);
+            const endPoint = currentArea + 5;
+            const visibleData = areas?.slice(startPoint, endPoint);
             startTransition(() => {
               setShowAreas(visibleData);
             });
@@ -56,7 +62,9 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
       <>
         <ul
           className={"mt-[7.3rem] relative bg-white"}
-          style={{ height: !isLoading ? areas?.length * 52 : 15 * 52 }}
+          style={{
+            height: !isLoading ? areas?.length * 52 : visibleAreaCount * 52,
+          }}
         >
           {!isLoading
             ? showAreas?.length > 0 &&
@@ -82,7 +90,7 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
                   <hr className="mt-[1.4rem] text-devider_gray" />
                 </li>
               ))
-            : Array(15)
+            : Array(visibleAreaCount + 5)
                 .fill("")
                 .map((item, index) => (
                   <li
@@ -91,12 +99,12 @@ const AreasList: React.FC<IAreasListProps> = React.memo(
                     key={index}
                   >
                     <div className="flex items-center justify-between">
-                      <div className=" h-2.5 bg-gray rounded-full w-36"></div>
+                      <div className="w-36 h-2.5 rounded-full bg-skeleton" />
                       <div
-                        className={`flex items-center justify-center w-[2rem] h-[2rem] rounded-full border-2 border-circle_gray`}
-                      ></div>
+                        className={`w-[2rem] h-[2rem] rounded-full border-2 border-skeleton`}
+                      />
                     </div>
-                    <hr className="mt-[1.4rem] text-devider_gray" />
+                    <hr className="mt-[1.4rem] text-skeleton" />
                   </li>
                 ))}
         </ul>
